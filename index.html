@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nuestra Boda - Alexis & Edith</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Pinyon+Script&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --gold: #4B3621;
+            --dark-gold: #B8860B;
+            --sepia: #5E4B3C;
+            --bg-cream: #F9F7F2;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: var(--bg-cream);
+            font-family: 'Cormorant Garamond', serif;
+            color: var(--sepia);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        .invitation-card {
+            max-width: 450px;
+            width: 90%;
+            background: white;
+            padding: 40px 20px;
+            text-align: center;
+            border: 2px solid var(--gold);
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+            position: relative;
+            background-image:linear-gradient(rgba(255,255,255,0.5), rgba(255,255,255,0.5)), url('https://blessmsg.com/wp-content/uploads/Engagement-Party-Invitations-Wording.jpg'); 
+            background-size: 200% 100%; /* Si quieres que se fuerce al ancho y largo exacto de la tarjeta */
+    /* O usa 'cover' si no quieres que la imagen se estire feo */
+        background-position: center;
+        background-repeat: no-repeat;
+        }
+
+        h1, h2 {
+            font-family: 'Pinyon Script', cursive;
+            color: #C59B4B;
+            font-size: 3.5rem;
+            margin: 10px 0;
+            font-weight: normal;
+        }
+
+        .section-title {
+            font-size: 2.2rem;
+            margin-top: 30px;
+            font-family: 'Birthstone';
+            font-style: italic;
+        }
+
+        .details {
+            font-size: 1.2rem;
+            line-height: 1.6;
+            margin: 5px 0;
+        }
+
+        .time {
+            
+            font-weight: 600;
+            letter-spacing: 2px;
+            font-size: 1.4rem;
+            
+        }
+
+        .location-name {
+            font-style: italic;
+            margin-bottom: 15px;
+            font-size: 1.4rem;
+        }
+
+        .btn-container {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            align-items: center;
+            margin-top: 25px;
+        }
+
+        .btn-row {
+            display: flex;
+            gap: 10px;
+            width: 100%;
+            justify-content: center;
+        }
+
+        .btn {
+            text-decoration: none;
+            color: white;
+            border: #C59B4B;
+            padding: 10px 25px;
+            border-radius: 50px;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            background: linear-gradient(145deg, #4B3621, #4B3621);
+            min-width: 140px;
+            display: inline-block;
+        }
+
+        .btn:hover {
+            background: white;
+            color: #4B3621;
+            box-shadow: 0 4px 10px white;
+        }
+
+        .btn-confirm {
+            background: var(--gold);
+            color: white;
+            font-weight: bold;
+        }
+
+        /* Adorno de bordes */
+        .corner {
+            position: absolute;
+            width: 40px;
+            height: 40px;
+            border: 1px solid var(--gold);
+            border-top-left-radius: 8px;
+            border-bottom-right-radius: 8px;
+        }
+        .top-left { top: 10px; left: 10px; border-right: none; border-bottom: none; }
+        .bottom-right { bottom: 10px; right: 10px; border-left: none; border-top: none; }
+        
+    </style>
+</head>
+<body>
+
+    <div class="invitation-card">
+        <div class="corner top-left"></div>
+        <div class="corner bottom-right"></div>
+
+        <h2 class="section-title">Ceremonia</h2>
+        <p class="time">15:00 horas</p>
+        <p class="location-name">Capilla Santa María de Guadalupe</p>
+        <a href="https://maps.app.goo.gl/CXzdMD8sb6R89TR27" target="_blank" class="btn">Ubicación</a>
+
+        <hr style="width: 50%; border: 0; border-top: 1px solid #a7862073; margin: 30px auto;">
+
+        <h2 class="section-title">Recepción</h2>
+        <p class="time">17:00 horas</p>
+        <p class="location-name">Salón de eventos anexo al Telebachillerato Carbonero Jacales</p>
+        
+        <div class="btn-container">
+            <div class="btn-row">
+                <a href="https://maps.app.goo.gl/6su17J1FpW97tBQ16" target="_blank" class="btn">Ubicación</a>
+                <a id="confirmBtn" href="#" target="_blank" class="btn btn-confirm">Confirmar asistencia</a>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Lógica para capturar el nombre del invitado desde la URL
+        // Ejemplo: invitacion.html?invitado=Familia%20Perez
+        const urlParams = new URLSearchParams(window.location.search);
+        const nombreInvitado = urlParams.get('invitado') || "Invitado Especial";
+        
+        // Tu link base de Google Forms
+        const formBase = "https://docs.google.com/forms/d/e/1FAIpQLSeEt4gik26i6yvEnKHGmViRijSvHBMkW7kR0wiDa1nVWecS5w/viewform?usp=pp_url&entry.1809809489=";
+        
+        // Actualizar el link del botón de confirmar
+        document.getElementById('confirmBtn').href = formBase + encodeURIComponent(nombreInvitado);
+    </script>
+</body>
+</html>
