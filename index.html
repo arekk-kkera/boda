@@ -160,11 +160,13 @@
         // Lógica para capturar el nombre del invitado desde la URL
         // Ejemplo: invitacion.html?invitado=Familia%20Perez
         const urlParams = new URLSearchParams(window.location.search);
-        const nombreInvitado = urlParams.get('invitado') || "Invitado Especial";
+        const nombreInvitado = urlParams.get('invitado') || "";
         
         // Tu link base de Google Forms
-        const formBase = "https://docs.google.com/forms/d/e/1FAIpQLSeEt4gik26i6yvEnKHGmViRijSvHBMkW7kR0wiDa1nVWecS5w/viewform?usp=pp_url&entry.1809809489=";
-        
+        const formBase = "#";
+        if ( nombreInvitado ) {
+            formBase = "https://docs.google.com/forms/d/e/1FAIpQLSc7qTJkaUWtJLJqlwLwvxaSc56DtG_wX1pc3eTmhtohdObDdQ/viewform?usp=pp_url&entry.2123829286=";
+        }
         // Actualizar el link del botón de confirmar
         document.getElementById('confirmBtn').href = formBase + encodeURIComponent(nombreInvitado);
     </script>
