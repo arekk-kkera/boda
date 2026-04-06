@@ -163,7 +163,7 @@
         const nombreInvitado = urlParams.get('invitado') || "";
         
         // Tu link base de Google Forms
-        const formBase = "#";
+        let formBase = "#";
         if ( nombreInvitado ) {
             formBase = "https://docs.google.com/forms/d/e/1FAIpQLSc7qTJkaUWtJLJqlwLwvxaSc56DtG_wX1pc3eTmhtohdObDdQ/viewform?usp=pp_url&entry.2123829286=";
         }
